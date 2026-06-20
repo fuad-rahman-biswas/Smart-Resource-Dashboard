@@ -31,15 +31,12 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 
 ## Screenshots
 
-> 🚧 Add screenshots here once the UI is finalized — one per feature works well
-> (Dashboard, Threshold Settings, Alert log, Usage History).
 
-```
-![Dashboard](Screenshots/Dashboard.jpeg)
-![Threshold Settings](screenshots/threshold-settings.png)
-![Alerts](screenshots/alerts.png)
-![Usage History](screenshots/history.png)
-```
+![Dashboard and Alert](Screenshots/Dashboard.jpeg)
+![Threshold Settings](Screenshots/Threshold_Settings.jpeg)
+![Profile](Screenshots/Profile.jpeg)
+![Usage History](Screenshots/Usage_History.jpeg)
+
 
 ## Tech Stack
 
