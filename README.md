@@ -33,7 +33,7 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 
 
 ![Dashboard and Alert](Screenshots/Dashboard.jpeg)
-![Threshold Settings](Screenshots/Threshold Settings.jpeg)
+![Threshold Settings](Screenshots/Threshold%20Settings.jpeg)
 ![Profile](Screenshots/Profile.jpeg)
 ![Usage History](Screenshots/Usage%20History.jpeg)
 
