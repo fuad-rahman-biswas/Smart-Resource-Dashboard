@@ -35,7 +35,7 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 ![Dashboard and Alert](Screenshots/Dashboard.jpeg)
 ![Threshold Settings](Screenshots/Threshold Settings.jpeg)
 ![Profile](Screenshots/Profile.jpeg)
-![Usage History](Screenshots/Usage History.jpeg)
+![Usage History](Screenshots/Usage%20History.jpeg)
 
 
 ## Tech Stack
