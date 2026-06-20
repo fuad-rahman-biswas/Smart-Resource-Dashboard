@@ -2,6 +2,8 @@
 
 **Team LGCY4** · ImagineHack · Track 3 — DoubleDot: Smarter Resource Management
 
+> A live dashboard that flags resource overuse before it becomes a bigger bill.
+
 ## About
 
 Businesses and communities often waste electricity, water, and transport fuel simply
@@ -27,6 +29,18 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 - **Usage History** — view past usage on a daily, weekly, or monthly basis to spot
   trends before they turn into alerts.
 
+## Screenshots
+
+> 🚧 Add screenshots here once the UI is finalized — one per feature works well
+> (Dashboard, Threshold Settings, Alert log, Usage History).
+
+```
+![Dashboard](screenshots/dashboard.png)
+![Threshold Settings](screenshots/threshold-settings.png)
+![Alerts](screenshots/alerts.png)
+![Usage History](screenshots/history.png)
+```
+
 ## Tech Stack
 
 | Layer    | Technology           |
@@ -35,7 +49,26 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 | Backend  | Python                |
 | Database | SQLite                |
 
+  ## Usage
 
+1. Open the dashboard to view current usage for electricity, water, and transport fuel.
+2. Go to **Threshold Settings** (or use the inline editor on the dashboard) to set a
+   usage limit for each resource.
+3. If usage exceeds a threshold, an alert is raised and logged automatically.
+4. Visit **Usage History** to review daily, weekly, or monthly trends for any resource.
+
+## Contributing
+
+This project was built during ImagineHack and isn't currently set up for outside
+contributions. If that changes, contribution guidelines (branching, code style, pull
+request process) will be added here.
+
+## License
+
+No license has been chosen yet. Until one is added, all rights are reserved by the
+project authors. *(Consider adding an [MIT](https://choosealicense.com/licenses/mit/)
+or similar open-source license here if you'd like others to use or build on this
+project.)*
 
 ## Team
 
@@ -43,4 +76,4 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 
 ---
 
-*Submitted for Track 3: DoubleDot — Smarter Resource Management, ImagineHack 2026.*
+*Submitted for Track 3: DoubleDot — Smarter Resource Management, ImagineHack.*
