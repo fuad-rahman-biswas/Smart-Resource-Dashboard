@@ -73,4 +73,4 @@ project.)*
 
 ---
 
-*Submitted for Track 3: DoubleDot — Smarter Resource Management, ImagineHack.*
+*Submitted for Track 3: DoubleDot — Smarter Resource Management, ImagineHack 2026.*
