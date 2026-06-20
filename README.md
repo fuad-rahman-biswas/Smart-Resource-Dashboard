@@ -35,7 +35,7 @@ crossed — so overuse gets caught early instead of showing up on next month's b
 > (Dashboard, Threshold Settings, Alert log, Usage History).
 
 ```
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots/Dashboard.jpeg)
 ![Threshold Settings](screenshots/threshold-settings.png)
 ![Alerts](screenshots/alerts.png)
 ![Usage History](screenshots/history.png)
