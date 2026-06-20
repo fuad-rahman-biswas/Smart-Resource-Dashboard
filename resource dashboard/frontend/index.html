@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoTrack Resource Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" aria-label="Main navigation">
+            <div class="brand">
+                <div class="brand-mark"><i data-lucide="leaf"></i></div>
+                <div>
+                    <strong>EcoTrack</strong>
+                    <small>Resource Monitor</small>
+                </div>
+            </div>
+
+            <nav class="nav-list">
+                <a class="active" href="#dashboard" data-page-link="dashboard"><i
+                        data-lucide="layout-dashboard"></i>Dashboard</a>
+                <a href="#trends" data-page-link="trends"><i data-lucide="chart-line"></i>Trends</a>
+                <a href="#thresholds" data-page-link="thresholds"><i data-lucide="sliders-horizontal"></i>Thresholds</a>
+                <a href="#history" data-page-link="history"><i data-lucide="history"></i>History</a>
+                <a href="#profile" data-page-link="profile"><i data-lucide="user-round-cog"></i>Profile</a>
+            </nav>
+
+            <div class="sidebar-card">
+                <span>System Status</span>
+                <strong id="sidebarScore">Monitoring Active</strong>
+                <p>Database connected and tracking resource utilization limits.</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">Track 3 - Smarter Resource Management</p>
+                    <h1>Household usage dashboard</h1>
+                </div>
+                <div class="top-actions">
+                    <button class="ghost-button" id="refreshBtn"><i
+                            data-lucide="refresh-cw"></i><span>Refresh</span></button>
+                    <button class="ghost-button" id="profileBtn"><i
+                            data-lucide="user-round-cog"></i><span>Profile</span></button>
+                </div>
+            </header>
+
+            <section id="dashboard" class="page-view active" data-page="dashboard">
+                <div class="account-strip" aria-label="Account summary">
+                    <div>
+                        <span>Signed in as</span>
+                        <strong id="currentUserName">Guest user</strong>
+                    </div>
+                    <div>
+                        <span>Home type</span>
+                        <strong id="homeType">Not set</strong>
+                    </div>
+                    <div>
+                        <span>Billing area</span>
+                        <strong id="billingArea">Selangor</strong>
+                    </div>
+                    <div>
+                        <span>Alert status</span>
+                        <strong id="alertStatus">Active</strong>
+                    </div>
+                </div>
+
+                <div class="metric-grid" aria-label="Resource summary">
+                    <article class="metric-card electricity" data-resource="electricity">
+                        <div class="metric-head">
+                            <div class="metric-icon"><i data-lucide="zap"></i></div>
+                            <button class="mini-button edit-threshold-btn" data-resource="electricity">Edit
+                                limit</button>
+                        </div>
+                        <span>Electricity</span>
+                        <strong><b id="electricityValue">0</b> kWh</strong>
+                        <p id="electricityStatus">Checking threshold...</p>
+                    </article>
+
+                    <article class="metric-card water" data-resource="water">
+                        <div class="metric-head">
+                            <div class="metric-icon"><i data-lucide="droplets"></i></div>
+                            <button class="mini-button edit-threshold-btn" data-resource="water">Edit limit</button>
+                        </div>
+                        <span>Water</span>
+                        <strong><b id="waterValue">0</b> L</strong>
+                        <p id="waterStatus">Checking threshold...</p>
+                    </article>
+
+                    <article class="metric-card fuel" data-resource="fuel">
+                        <div class="metric-head">
+                            <div class="metric-icon"><i data-lucide="fuel"></i></div>
+                            <button class="mini-button edit-threshold-btn" data-resource="fuel">Edit limit</button>
+                        </div>
+                        <span>Transport fuel</span>
+                        <strong><b id="fuelValue">0</b> L</strong>
+                        <p id="fuelStatus">Checking threshold...</p>
+                    </article>
+                </div>
+
+                <section class="dashboard-panel" aria-label="Dashboard alerts">
+                    <div class="panel-header">
+                        <div>
+                            <h2>Alerts</h2>
+                            <p>Usage alerts appear here when a resource exceeds its saved threshold.</p>
+                        </div>
+                    </div>
+                    <div id="alertsList">Loading...</div>
+                </section>
+
+            </section>
+
+            <section id="trends" class="page-view" data-page="trends">
+                <div class="chart-wrap">
+                    <div class="chart-toolbar">
+                        <div>
+                            <h2>Usage trends</h2>
+                            <p>Compare resource usage by daily, weekly, or monthly views.</p>
+                        </div>
+                        <div class="chart-controls" aria-label="Trend filters">
+                            <select id="resourceFilter">
+                                <option value="all">All resources</option>
+                                <option value="electricity">Electricity</option>
+                                <option value="water">Water</option>
+                                <option value="fuel">Fuel</option>
+                            </select>
+                            <select id="timeframeFilter">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <canvas id="usageChart" aria-label="Usage trend chart"></canvas>
+                    <div class="chart-legend" id="chartLegend" aria-label="Chart key"></div>
+                </div>
+            </section>
+
+            <section id="thresholds" class="page-view" data-page="thresholds">
+                <h2>Manage Resource Thresholds</h2>
+                <p style="color: var(--muted); margin-bottom: 24px;">Set custom limits for your household resources. You
+                    will receive system alerts when these limits are exceeded, and the chart will update to reflect your
+                    new baselines.</p>
+                <div class="data-list" id="thresholdsPageList">
+                </div>
+            </section>
+
+            <section id="history" class="page-view" data-page="history">
+                <h2>History</h2>
+                <div id="historyList">Loading...</div>
+            </section>
+
+            <section id="profile" class="page-view" data-page="profile">
+                <div class="profile-grid">
+                    <article class="profile-summary">
+                        <div class="profile-avatar"><i data-lucide="user-round"></i></div>
+                        <span>Account status</span>
+                        <strong id="profileStatus">Signed out</strong>
+                        <p id="profileSummaryText">Sign in to personalize your dashboard profile.</p>
+                    </article>
+
+                    <form class="profile-form" id="profileForm">
+                        <div class="panel-header">
+                            <div>
+                                <h2>Profile</h2>
+                                <p>View and edit your dashboard details.</p>
+                            </div>
+                        </div>
+
+                        <label>Name
+                            <input type="text" id="profileName" placeholder="Guest user" />
+                        </label>
+                        <label>Email
+                            <input type="email" id="profileEmail" placeholder="guest@example.com" />
+                        </label>
+                        <label>Home type
+                            <select id="profileHomeType">
+                                <option value="Not set">Not set</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Terrace house">Terrace house</option>
+                                <option value="Semi-detached">Semi-detached</option>
+                                <option value="Bungalow">Bungalow</option>
+                            </select>
+                        </label>
+                        <label>Billing area
+                            <input type="text" id="profileBillingArea" placeholder="Selangor" />
+                        </label>
+
+                        <div class="profile-actions">
+                            <button class="primary-button" type="submit"><i data-lucide="save"></i><span>Save profile</span></button>
+                            <button class="ghost-button" type="button" id="profileAuthBtn"><i data-lucide="log-in"></i><span>Sign in</span></button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="thresholdModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Edit Limit</h3>
+                <button class="mini-button close-modal"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <label for="thresholdInput" style="font-size: 14px; font-weight: bold; color: var(--muted);">New Target
+                    Limit (<span id="modalUnit"></span>)</label>
+                <input type="number" id="thresholdInput"
+                    style="width: 100%; margin-top: 8px; padding: 10px; border: 1px solid var(--line); border-radius: 8px;">
+                <input type="hidden" id="modalResource">
+            </div>
+            <div class="modal-footer" style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 8px;">
+                <button class="ghost-button close-modal">Cancel</button>
+                <button class="primary-button" id="saveThresholdBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script>if (window.lucide) lucide.createIcons();</script>
+    <script src="app.js"></script>
+</body>
+
+</html>
